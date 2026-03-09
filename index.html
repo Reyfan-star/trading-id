@@ -3,96 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akademi Trading Pemula</title>
+    <title>Trading Pro Simulator</title>
     <style>
-        :root {
-            --hijau: #26a69a;
-            --merah: #ef5350;
-            --gelap: #131722;
-        }
-        body {
-            font-family: sans-serif;
-            background-color: var(--gelap);
-            color: white;
-            margin: 0;
-            padding: 20px;
-        }
-        .container { max-width: 600px; margin: auto; }
-        header { text-align: center; padding: 20px 0; border-bottom: 2px solid #2a2e39; }
+        :root { --hijau: #26a69a; --merah: #ef5350; --gelap: #131722; }
+        body { font-family: 'Trebuchet MS', sans-serif; background: var(--gelap); color: white; margin: 0; padding: 10px; }
+        .header { text-align: center; padding: 10px; border-bottom: 1px solid #2a2e39; }
         
-        .card {
-            background: #1e222d;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 20px 0;
-            border-left: 5px solid var(--hijau);
-        }
+        /* Widget Grafik */
+        .chart-container { height: 400px; margin: 15px 0; border: 1px solid #2a2e39; border-radius: 8px; overflow: hidden; }
         
-        .candlestick-box {
-            background: #2a2e39;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .btn-materi {
-            width: 100%;
-            padding: 12px;
-            margin: 5px 0;
-            background: #2a2e39;
-            border: 1px solid #434651;
-            color: white;
-            border-radius: 8px;
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .highlight-hijau { color: var(--hijau); font-weight: bold; }
-        .highlight-merah { color: var(--merah); font-weight: bold; }
-        
-        footer { text-align: center; font-size: 12px; color: #868991; margin-top: 30px; }
+        /* Panel Simulasi */
+        .simulasi-panel { background: #1e222d; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #363a45; }
+        .saldo-box { font-size: 20px; color: var(--hijau); font-weight: bold; margin-bottom: 10px; text-align: center; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #434651; background: #2a2e39; color: white; }
+        .btn-group { display: flex; gap: 10px; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; color: white; }
+        .buy { background: var(--hijau); }
+        .sell { background: var(--merah); }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>📈 Trading Academy</h1>
-        <p>Belajar Mandiri dari HP</p>
-    </header>
-
-    <div class="card">
-        <h3>1. Apa itu Candlestick?</h3>
-        <p>Grafik yang menunjukkan pergerakan harga.</p>
-        <div class="candlestick-box">
-            <span class="highlight-hijau">HIJAU (Bullish)</span> = Harga NAIK <br>
-            <span class="highlight-merah">MERAH (Bearish)</span> = Harga TURUN <br>
-            <small>Sumbu atas/bawah menunjukkan harga tertinggi/terendah.</small>
-        </div>
-    </div>
-
-    <div class="card" style="border-left-color: #ff9800;">
-        <h3>2. Istilah Dasar (Klik untuk tahu)</h3>
-        <button class="btn-materi" onclick="alert('Support: Batas harga bawah (lantai). Biasanya harga sulit tembus ke bawah lagi.')">➡️ Apa itu Support?</button>
-        <button class="btn-materi" onclick="alert('Resistance: Batas harga atas (atap). Biasanya harga sulit tembus ke atas lagi.')">➡️ Apa itu Resistance?</button>
-        <button class="btn-materi" onclick="alert('Take Profit: Titik di mana kamu mengambil keuntungan.')">➡️ Apa itu Take Profit (TP)?</button>
-        <button class="btn-materi" onclick="alert('Stop Loss: Titik di mana kamu menjual rugi untuk membatasi risiko.')">➡️ Apa itu Stop Loss (SL)?</button>
-    </div>
-
-    <div class="card" style="border-left-color: var(--merah);">
-        <h3>3. Tips Psikologi Trading</h3>
-        <ul>
-            <li>Gunakan uang yang siap hilang (uang dingin).</li>
-            <li>Jangan FOMO (ikut-ikutan orang tanpa analisa).</li>
-            <li>Trading adalah marathon, bukan lari cepat.</li>
-        </ul>
-    </div>
-
-    <footer>
-        Dibuat oleh AI Gemini & Kamu 🚀
-    </footer>
+<div class="header">
+    <h2>📈 Live Trading Pro</h2>
+    <p>Harga Real-Time dari Pasar Dunia</p>
 </div>
 
+<div class="chart-container">
+    <div id="tradingview_chart"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget({
+      "autosize": true,
+      "symbol": "BINANCE:BTCUSDT",
+      "interval": "1",
+      "timezone": "Asia/Jakarta",
+      "theme": "dark",
+      "style": "1",
+      "locale": "id",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "hide_top_toolbar": true,
+      "save_image": false,
+      "container_id": "tradingview_chart"
+    });
+    </script>
+</div>
+
+<div class="simulasi-panel">
+    <div class="saldo-box">Saldo Demo: $<span id="saldo">1000</span></div>
+    <input type="number" id="amount" placeholder="Jumlah Investasi ($)">
+    <div class="btn-group">
+        <button class="btn buy" onclick="trade('BUY')">NAIK (Buy)</button>
+        <button class="btn sell" onclick="trade('SELL')">TURUN (Sell)</button>
+    </div>
+    <p id="notif" style="text-align: center; font-size: 14px; margin-top: 10px;"></p>
+</div>
+
+<script>
+    let saldo = 1000;
+    function trade(tipe) {
+        let amount = document.getElementById('amount').value;
+        if(amount == "" || amount <= 0) {
+            alert("Isi jumlah dolar dulu bos!");
+            return;
+        }
+        
+        document.getElementById('notif').innerHTML = "⏳ Menganalisa pasar...";
+        
+        // Simulasi hasil (acak)
+        setTimeout(() => {
+            let win = Math.random() > 0.5;
+            if(win) {
+                let untung = amount * 0.8;
+                saldo += untung;
+                document.getElementById('notif').innerHTML = "✅ PROFIT! Kamu untung $" + untung.toFixed(2);
+                document.getElementById('notif').style.color = "#26a69a";
+            } else {
+                saldo -= amount;
+                document.getElementById('notif').innerHTML = "❌ LOSS! Saldo berkurang $" + amount;
+                document.getElementById('notif').style.color = "#ef5350";
+            }
+            document.getElementById('saldo').innerHTML = saldo.toFixed(2);
+        }, 2000);
+    }
+</script>
+
 </body>
-            </html>
+</html>
