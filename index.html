@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akademi Trading Pemula</title>
+    <style>
+        :root {
+            --hijau: #26a69a;
+            --merah: #ef5350;
+            --gelap: #131722;
+        }
+        body {
+            font-family: sans-serif;
+            background-color: var(--gelap);
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 600px; margin: auto; }
+        header { text-align: center; padding: 20px 0; border-bottom: 2px solid #2a2e39; }
+        
+        .card {
+            background: #1e222d;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid var(--hijau);
+        }
+        
+        .candlestick-box {
+            background: #2a2e39;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .btn-materi {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            background: #2a2e39;
+            border: 1px solid #434651;
+            color: white;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .highlight-hijau { color: var(--hijau); font-weight: bold; }
+        .highlight-merah { color: var(--merah); font-weight: bold; }
+        
+        footer { text-align: center; font-size: 12px; color: #868991; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📈 Trading Academy</h1>
+        <p>Belajar Mandiri dari HP</p>
+    </header>
+
+    <div class="card">
+        <h3>1. Apa itu Candlestick?</h3>
+        <p>Grafik yang menunjukkan pergerakan harga.</p>
+        <div class="candlestick-box">
+            <span class="highlight-hijau">HIJAU (Bullish)</span> = Harga NAIK <br>
+            <span class="highlight-merah">MERAH (Bearish)</span> = Harga TURUN <br>
+            <small>Sumbu atas/bawah menunjukkan harga tertinggi/terendah.</small>
+        </div>
+    </div>
+
+    <div class="card" style="border-left-color: #ff9800;">
+        <h3>2. Istilah Dasar (Klik untuk tahu)</h3>
+        <button class="btn-materi" onclick="alert('Support: Batas harga bawah (lantai). Biasanya harga sulit tembus ke bawah lagi.')">➡️ Apa itu Support?</button>
+        <button class="btn-materi" onclick="alert('Resistance: Batas harga atas (atap). Biasanya harga sulit tembus ke atas lagi.')">➡️ Apa itu Resistance?</button>
+        <button class="btn-materi" onclick="alert('Take Profit: Titik di mana kamu mengambil keuntungan.')">➡️ Apa itu Take Profit (TP)?</button>
+        <button class="btn-materi" onclick="alert('Stop Loss: Titik di mana kamu menjual rugi untuk membatasi risiko.')">➡️ Apa itu Stop Loss (SL)?</button>
+    </div>
+
+    <div class="card" style="border-left-color: var(--merah);">
+        <h3>3. Tips Psikologi Trading</h3>
+        <ul>
+            <li>Gunakan uang yang siap hilang (uang dingin).</li>
+            <li>Jangan FOMO (ikut-ikutan orang tanpa analisa).</li>
+            <li>Trading adalah marathon, bukan lari cepat.</li>
+        </ul>
+    </div>
+
+    <footer>
+        Dibuat oleh AI Gemini & Kamu 🚀
+    </footer>
+</div>
+
+</body>
+</html>
